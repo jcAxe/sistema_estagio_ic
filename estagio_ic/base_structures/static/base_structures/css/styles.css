@@ -1,0 +1,62 @@
+.navbar-text > a{
+	color: #2bf04c;
+	text-decoration: none;
+}
+
+
+div .jumbotron{
+	background-color: black;
+}
+
+div > a.btn.btn-success{
+	background-color: #2bf04c;
+	color: black;
+
+	margin-bottom:10px;
+}
+
+div .col-sm-6 > div.thumbnail {
+	border-width: 4px;
+	border-color: #2bf04c;
+}
+a.thumbnail{
+	background-color:black;
+	border-color: black;
+}
+
+div .thumbnail{
+	background-color:black;
+	border-color: black;
+}
+
+
+a.thumbnail:hover{
+	background-color:black;
+	border-color: black;
+
+}
+.home-thumb img:hover{
+
+	transform: scale(1.2);
+}
+.thumbnail img{
+	background-color:black;
+	border-color: black;
+	transform: all 0.3s ease 0s;
+
+}
+body {
+	padding-top: 30px;
+	padding-bottom: 70px;
+	background-color: black;
+}
+div .jumbotron > h1{
+	color: #2bf04c;
+}
+div .modal-body > p,
+div .modal-header > h4{
+	color:black;
+}
+p,h2,h3,h4{
+	color: #b9f6ab;
+}
