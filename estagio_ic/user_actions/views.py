@@ -16,6 +16,7 @@ def enterprise_menu(request):
 def student_profile(request):
     return render(request, 'user_actions/student_pages/student_profile.html')
 
+
 def student_register(request):
     return render(request, 'user_actions/student_pages/student_register.html')
 
