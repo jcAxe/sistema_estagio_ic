@@ -48,7 +48,7 @@ a.thumbnail:hover{
 body {
 	padding-top: 30px;
 	padding-bottom: 70px;
-	background-color: black;
+	background-color: white;
 }
 div .jumbotron > h1{
 	color: #2bf04c;
@@ -57,6 +57,11 @@ div .modal-body > p,
 div .modal-header > h4{
 	color:black;
 }
-p,h2,h3,h4{
+
+p{
+    color:black;
+}
+
+h2,h3,h4{
 	color: #b9f6ab;
 }
