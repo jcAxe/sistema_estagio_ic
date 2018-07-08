@@ -21,8 +21,7 @@ def student_register(request):
     return render(request, 'user_actions/student_pages/student_register.html')
 
 
-def coordinator_profile(request):
-    return render(request, 'user_actions/coordinator_pages/coordinator_profile.html')
+
 
 def coordinator_register(request):
     return render(request, 'user_actions/coordinator_pages/coordinator_register.html')
@@ -33,6 +32,13 @@ def enterprise_profile(request):
 
 def enterprise_register(request):
     return render(request, 'user_actions/enterprise_pages/enterprise_register.html')
+
+
+def list_student(request):
+    return render(request, 'user_actions/coordinator_pages/list_student.html')
+
+def list_enterprise(request):
+    return render(request, 'user_actions/coordinator_pages/list_enterprise.html')
 
 
 # Create your views here.

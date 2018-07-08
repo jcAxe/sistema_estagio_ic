@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% load static %}
+
+
+{% block conteudo %}
+
+
+
+<!-- First Grid -->
+<div class="container">
+		<div class="jumbotron text-center">
+			<h1>Empresa</h1>
+			<p>O quê você deseja fazer?</p>
+		</div>
+		<div class="row text-center">
+			<div class="col-md-6">
+				<a href="{% url 'user_actions:enterprise_register' %}" class="thumbnail home-thumb">
+				    <h3>Registrar empresa</h3>
+                </a>
+                <p>Se você for novo, registre-se no nosso sistema.</p>
+
+			</div>
+			<div class="col-md-6">
+				<a href="{% url 'user_actions:enterprise_profile' %}" class="thumbnail home-thumb">
+				    <h3>Administrar perfil</h3>
+				</a>
+                <p>Você pode se identificar e realizar ações como: Criar vagas.</p>
+			</div>
+
+		</div>
+	</div>
+
+
+{% endblock %}
