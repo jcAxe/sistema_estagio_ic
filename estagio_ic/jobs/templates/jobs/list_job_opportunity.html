@@ -1,10 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% load static %}
+
+{% block titulo %}
+    <title>Vagas</title>
+{% endblock %}
+
+{% block conteudo %}
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h2>Vagas disponíveis</h2>
+                        <div class="row">
+                            {% for job_opportunity in job_opportunities %}
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="thumbnail">
+                                        <div class="caption">
+                                             <h4><a href="{{ job_opportunity.get_absolute_path }}">{{ job_opportunity.name }}</a></h4>
+                                            <p>{{ job_opportunity.name }}</p>
+                                            <p>{{ job_opportunity.enterprise.name }}</p>
+                                            <p>{{ job_opportunity.salary }}</p>
+                                            <p>{{ job_opportunity.weekly_workload }}</p>
+                                            <p>{{ job_opportunity.description }}</p>
+                                            <p>{{ job_opportunity.requirements }}</p>
+                                            <p>{{ job_opportunity.benefits }}</p>
+                                            <br>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

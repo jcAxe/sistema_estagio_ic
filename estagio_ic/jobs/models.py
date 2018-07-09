@@ -9,7 +9,7 @@ from user_actions.models import Enterprise
 
 class JobOpportunity (models.Model):
     name = models.CharField(max_length=200, db_index=True)
-    enterprise_id = models.ForeignKey(Enterprise, related_name='owner')
+    enterprise = models.ForeignKey(Enterprise, related_name='owner')
 
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
     salary = models.PositiveIntegerField(unique=True)
@@ -18,7 +18,7 @@ class JobOpportunity (models.Model):
     description = models.TextField(blank=True)
     requirements = models.TextField(blank=True)
     benefits = models.TextField(blank=True)
-
+    available = models.BooleanField(default=True)
 
     register_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
@@ -35,8 +35,8 @@ class JobOpportunity (models.Model):
 
 
     #this have to be looked carefully, ass zé, trab estagio
-    # def get_absolute_path(self):
-    #     return reverse('user_actions:display_student', args=[self.id, self.slug])
+    def get_absolute_path(self):
+        return reverse('jobs:display_job_opportunity', args=[self.id, self.slug])
 
     def __str__(self):
         return self.name

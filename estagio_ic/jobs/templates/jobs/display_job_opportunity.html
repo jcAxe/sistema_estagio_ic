@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% load static %}
+
+
+{% block conteudo %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+
+            </div>
+            <div class="col-sm-9">
+                <h3><a href="{{ job_opportunity.get_absolute_path }}">{{ job_opportunity.name }}</a></h3>
+                <p>{{ job_opportunity.name }}</p>
+                <p>{{ job_opportunity.enterprise.name }}</p>
+                <p>{{ job_opportunity.salary }}</p>
+                <p>{{ job_opportunity.weekly_workload }}</p>
+                <p>{{ job_opportunity.description }}</p>
+                <p>{{ job_opportunity.requirements }}</p>
+                <p>{{ job_opportunity.benefits }}</p>
+
+
+                <!--<a href="{{ imovel.get_absolute_path}}sucesso">-->
+                   <!--<input type="button" value="Alugar" />-->
+                <!--</a>-->
+            </div>
+        </div>
+    </div>
+{% endblock %}
