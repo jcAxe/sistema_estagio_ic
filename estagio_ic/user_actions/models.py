@@ -35,9 +35,8 @@ class Student(models.Model):
         return self.register_date >= timezone.now() - datetime.timedelta(days=1)
 
 
-    #this have to be looked carefully, ass zé, trab estagio
-    # def get_absolute_path(self):
-    #     return reverse('user_actions:display_student', args=[self.id, self.slug])
+    def get_absolute_path(self):
+        return reverse('user_actions:validate_student', args=[self.id, self.slug])
 
     def __str__(self):
         return self.name
@@ -63,8 +62,8 @@ class Enterprise(models.Model):
         return self.register_date >= timezone.now() - datetime.timedelta(days=1)
 
     # this have to be looked carefully, ass zé, trab estagio
-    # def get_absolute_path(self):
-    #     return reverse('user_actions:display_enterprise', args=[self.id, self.slug])
+    def get_absolute_path(self):
+        return reverse('user_actions:validate_enterprise', args=[self.id, self.slug])
 
     def __str__(self):
         return self.name

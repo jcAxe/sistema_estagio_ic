@@ -17,3 +17,4 @@ def list_job_application(request):
 
 def display_job_application(request):
     return render(request, 'jobs/display_job_application.html')
+

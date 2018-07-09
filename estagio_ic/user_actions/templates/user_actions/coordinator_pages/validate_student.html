@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block conteudo %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+
+            </div>
+            <div class="col-sm-9">
+                <h3><a href="{{ student.get_absolute_path }}">{{ student.name }}</a></h3>
+                <h3>{{ student.major }}</h3>
+                <p>{{student.enroll_number}}</p>
+                <p>{{student.description}}</p>
+
+                <!--<a href="{{ imovel.get_absolute_path}}sucesso">-->
+                   <!--<input type="button" value="Alugar" />-->
+                <!--</a>-->
+            </div>
+        </div>
+    </div>
+{% endblock %}

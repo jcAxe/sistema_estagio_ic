@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block conteudo %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+
+            </div>
+            <div class="col-sm-9">
+                <h3><a href="{{ enterprise.get_absolute_path }}">{{ enterprise.name }}</a></h3>
+
+                <!--<a href="{{ imovel.get_absolute_path}}sucesso">-->
+                   <!--<input type="button" value="Alugar" />-->
+                <!--</a>-->
+            </div>
+        </div>
+    </div>
+{% endblock %}

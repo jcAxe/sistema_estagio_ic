@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from user_actions.models import Student
 from user_actions.models import Enterprise
+
 
 def student_menu(request):
     return render(request, 'user_actions/student_pages/student_menu.html')
@@ -58,4 +59,20 @@ def list_enterprise(request):
         })
 
 
+def validate_student(request, id, student_slug):
+
+    student = get_object_or_404(Student, id=id,
+                               slug=student_slug)
+
+    return render(request, 'user_actions/coordinator_pages/validate_student.html', {'student': student})
+
+
+def validate_enterprise(request, id, enterprise_slug):
+
+    enterprise = get_object_or_404(Enterprise, id=id,
+                               slug=enterprise_slug)
+
+    return render(request, 'user_actions/coordinator_pages/validate_enterprise.html', {'enterprise': enterprise})
+
 # Create your views here.
+
