@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-
+from user_actions.models import Student
+from user_actions.models import Enterprise
 
 def student_menu(request):
     return render(request, 'user_actions/student_pages/student_menu.html')
@@ -35,7 +36,16 @@ def enterprise_register(request):
 
 
 def list_student(request):
-    return render(request, 'user_actions/coordinator_pages/list_student.html')
+
+    unverified_students = Student.objects.filter(validation_pending=True)
+    verified_students = Student.objects.filter(validation_pending=False)
+
+
+    return render(request, 'user_actions/coordinator_pages/list_student.html', {
+        'unverified_students' : unverified_students,
+        'verified_students' : verified_students,
+        })
+
 
 def list_enterprise(request):
     return render(request, 'user_actions/coordinator_pages/list_enterprise.html')

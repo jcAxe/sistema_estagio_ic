@@ -39,7 +39,7 @@ class JobOpportunity (models.Model):
     #     return reverse('user_actions:display_student', args=[self.id, self.slug])
 
     def __str__(self):
-        return self.endereco
+        return self.name
 
 class Application (models.Model):
     student_cpf = models.ForeignKey(Student, related_name='applicant')
@@ -66,4 +66,4 @@ class Application (models.Model):
     #     return reverse('user_actions:display_student', args=[self.id, self.slug])
 
     def __str__(self):
-        return self.endereco
+        return 'candidatura_' + self.id

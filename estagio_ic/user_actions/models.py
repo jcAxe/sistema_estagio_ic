@@ -16,7 +16,7 @@ class Student(models.Model):
     qualifications = models.TextField(blank=True)
     gpa = models.PositiveIntegerField()
     description = models.TextField(blank=True)
-    validation_pending = models.BooleanField(default=False)
+    validation_pending = models.BooleanField(default=True)
     able = models.BooleanField(default=False)
     time_available_start = models.TextField()
     time_available_end = models.TextField()
@@ -40,7 +40,7 @@ class Student(models.Model):
     #     return reverse('user_actions:display_student', args=[self.id, self.slug])
 
     def __str__(self):
-        return self.endereco
+        return self.name
 
 
 class Enterprise(models.Model):
@@ -67,4 +67,4 @@ class Enterprise(models.Model):
     #     return reverse('user_actions:display_enterprise', args=[self.id, self.slug])
 
     def __str__(self):
-        return self.endereco
+        return self.name
