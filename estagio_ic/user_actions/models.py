@@ -48,7 +48,7 @@ class Enterprise(models.Model):
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
     pw = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    validation_pending = models.BooleanField(default=False)
+    validation_pending = models.BooleanField(default=True)
     able = models.BooleanField(default=False)
 
     register_date = models.DateTimeField(auto_now_add=True)

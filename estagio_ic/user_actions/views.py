@@ -48,7 +48,14 @@ def list_student(request):
 
 
 def list_enterprise(request):
-    return render(request, 'user_actions/coordinator_pages/list_enterprise.html')
+    unverified_enterprises = Enterprise.objects.filter(validation_pending=True)
+    verified_enterprises = Enterprise.objects.filter(validation_pending=False)
+
+
+    return render(request, 'user_actions/coordinator_pages/list_enterprise.html', {
+        'unverified_enterprises' : unverified_enterprises,
+        'verified_enterprises' : verified_enterprises,
+        })
 
 
 # Create your views here.
