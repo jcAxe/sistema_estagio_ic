@@ -20,4 +20,6 @@ urlpatterns = [
     url(r'^validation_st/(?P<id>\d+)/(?P<student_slug>[-\w]+)/$', views.validate_student, name='validate_student'),
     url(r'^validation_ent/(?P<id>\d+)/(?P<enterprise_slug>[-\w]+)/$', views.validate_enterprise, name='validate_enterprise'),
 
+    url(r'^successful_register/$', views.successful_register, name='successful_register'),
+
 ]

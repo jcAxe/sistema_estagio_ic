@@ -1,9 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.template.defaultfilters import slugify
+
 from user_actions.models import Student
 from user_actions.models import Enterprise
-
+from user_actions.forms import StudentRegisterForm
+from user_actions.forms import EnterpriseRegisterForm
 
 def student_menu(request):
     return render(request, 'user_actions/student_pages/student_menu.html')
@@ -19,8 +22,23 @@ def student_profile(request):
     return render(request, 'user_actions/student_pages/student_profile.html')
 
 
+
 def student_register(request):
-    return render(request, 'user_actions/student_pages/student_register.html')
+
+    if request.method == 'POST':
+        form = StudentRegisterForm(request.POST)
+
+        if form.is_valid():
+            preview = form.save(commit=False)
+            preview.slug = slugify(preview.name)
+            preview.save()
+            return HttpResponseRedirect(reverse('user_actions:successful_register'))
+    else:
+        form = StudentRegisterForm()
+
+
+
+    return render(request, 'user_actions/student_pages/student_register.html',{'form' : form})
 
 
 
@@ -33,7 +51,23 @@ def enterprise_profile(request):
     return render(request, 'user_actions/enterprise_pages/enterprise_profile.html')
 
 def enterprise_register(request):
-    return render(request, 'user_actions/enterprise_pages/enterprise_register.html')
+    if request.method == 'POST':
+        form = EnterpriseRegisterForm(request.POST)
+
+        if form.is_valid():
+            preview = form.save(commit=False)
+            preview.slug = slugify(preview.name)
+            preview.save()
+            return HttpResponseRedirect(reverse('user_actions:successful_register'))
+    else:
+        form = EnterpriseRegisterForm()
+
+    return render(request, 'user_actions/enterprise_pages/enterprise_register.html',{'form' : form})
+
+
+def successful_register(request):
+    return render(request, 'user_actions/successful_register.html')
+
 
 
 def list_student(request):
