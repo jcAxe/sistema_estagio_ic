@@ -11,7 +11,13 @@
             </div>
             <div class="col-sm-9">
                 <h3><a href="{{ enterprise.get_absolute_path }}">{{ enterprise.name }}</a></h3>
-
+                <p>
+                    {% if enterprise.validation_pending %}
+                        Empresa não verificada.
+                    {% else %}
+                        Empresa verificada.
+                    {% endif %}
+                </p>
                 <!--<a href="{{ imovel.get_absolute_path}}sucesso">-->
                    <!--<input type="button" value="Alugar" />-->
                 <!--</a>-->

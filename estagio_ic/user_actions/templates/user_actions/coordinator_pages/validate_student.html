@@ -15,6 +15,13 @@
                 <p>{{student.enroll_number}}</p>
                 <p>{{student.description}}</p>
 
+                <p>
+                    {% if student.validation_pending %}
+                        Estudante não verificada.
+                    {% else %}
+                        Estudante verificada.
+                    {% endif %}
+                </p>
                 <!--<a href="{{ imovel.get_absolute_path}}sucesso">-->
                    <!--<input type="button" value="Alugar" />-->
                 <!--</a>-->
