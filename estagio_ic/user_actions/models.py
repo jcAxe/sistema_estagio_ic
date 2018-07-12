@@ -17,7 +17,9 @@ class Student(models.Model):
     gpa = models.PositiveIntegerField()
     description = models.TextField(blank=True)
     validation_pending = models.BooleanField(default=True)
+    registered = models.BooleanField(default=False)
     able = models.BooleanField(default=False)
+
     time_available_start = models.TextField()
     time_available_end = models.TextField()
 
@@ -48,6 +50,7 @@ class Enterprise(models.Model):
     pw = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     validation_pending = models.BooleanField(default=True)
+    registered = models.BooleanField(default=False)
     able = models.BooleanField(default=False)
 
     register_date = models.DateTimeField(auto_now_add=True)

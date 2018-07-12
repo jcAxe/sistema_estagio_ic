@@ -7,7 +7,7 @@ from user_actions.models import Enterprise
 # Register your models here.
 class StudentAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug','major_id',
-                    'id_doc_number', 'able']
+                    'id_doc_number', 'registered']
     prepopulated_fields = {'slug': ('name',)}
 
 
@@ -15,7 +15,7 @@ admin.site.register(Student, StudentAdmin)
 
 
 class EnterpriseAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug','able']
+    list_display = ['name', 'slug','registered']
 
     prepopulated_fields = {'slug': ('name',)}
     # prepopulated_fields = {'slug': ('numero', 'rua', 'cep',)}
