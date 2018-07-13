@@ -75,10 +75,29 @@ def validation_result(request, id, student_slug):
                                slug=student_slug)
 
     result = student.registered
+    print(result)
+    return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
+
+def approve_student(request, id, student_slug):
+    student = get_object_or_404(Student, id=id,
+                                slug=student_slug)
+
+    student.registered = True
+    student.validation_pending = False
+    student.save()
+    result = student.registered
 
     return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
 
+def disapprove_student(request, id, student_slug):
+    student = get_object_or_404(Student, id=id,
+                                slug=student_slug)
+    student.registered = False
+    student.validation_pending = False
+    student.save()
+    result = student.registered
 
+    return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
 
 def list_student(request):
 
