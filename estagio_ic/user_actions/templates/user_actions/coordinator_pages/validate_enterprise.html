@@ -22,6 +22,10 @@
                    <!--<input type="button" value="Alugar" />-->
                 <!--</a>-->
             </div>
+            <div  class="col-sm-1">
+                <a href="{% url 'user_actions:approve_enterprise' enterprise.id enterprise.slug %}" class="btn btn-success">Aprovar</a>
+                <a href="{% url 'user_actions:disapprove_enterprise' enterprise.id enterprise.slug %}" class="btn btn-danger">Reprovar</a>
+            </div>
         </div>
     </div>
 {% endblock %}

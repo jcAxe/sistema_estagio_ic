@@ -22,7 +22,10 @@ urlpatterns = [
 
     url(r'^successful_register/$', views.successful_register, name='successful_register'),
     url(r'^validation_result/(?P<id>\d+)/(?P<student_slug>[-\w]+)/$', views.validation_result, name='validation_result'),
-    url(r'^approve/(?P<id>\d+)/(?P<student_slug>[-\w]+)/$', views.approve_student, name='approve_student'),
-    url(r'^disapprove/(?P<id>\d+)/(?P<student_slug>[-\w]+)/$', views.disapprove_student, name='disapprove_student'),
 
+    url(r'^approve_reg_st/(?P<id>\d+)/(?P<student_slug>[-\w]+)/$', views.approve_student, name='approve_student'),
+    url(r'^disapprove_reg_st/(?P<id>\d+)/(?P<student_slug>[-\w]+)/$', views.disapprove_student, name='disapprove_student'),
+
+    url(r'^approve_reg_ent/(?P<id>\d+)/(?P<enterprise_slug>[-\w]+)/$', views.approve_enterprise, name='approve_enterprise'),
+    url(r'^disapprove_reg_ent/(?P<id>\d+)/(?P<enterprise_slug>[-\w]+)/$', views.disapprove_enterprise, name='disapprove_enterprise'),
 ]

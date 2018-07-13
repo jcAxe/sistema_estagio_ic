@@ -99,6 +99,29 @@ def disapprove_student(request, id, student_slug):
 
     return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
 
+
+def approve_enterprise(request, id, enterprise_slug):
+    enterprise = get_object_or_404(Enterprise, id=id,
+                                slug=enterprise_slug)
+
+    enterprise.registered = True
+    enterprise.validation_pending = False
+    enterprise.save()
+    result = enterprise.registered
+
+    return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
+
+def disapprove_enterprise(request, id, enterprise_slug):
+    enterprise = get_object_or_404(Enterprise, id=id,
+                                slug=enterprise_slug)
+    enterprise.registered = False
+    enterprise.validation_pending = False
+    enterprise.save()
+    result = enterprise.registered
+
+    return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
+
+
 def list_student(request):
 
     unverified_students = Student.objects.filter(validation_pending=True)
