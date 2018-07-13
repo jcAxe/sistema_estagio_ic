@@ -69,6 +69,16 @@ def successful_register(request):
     return render(request, 'user_actions/successful_register.html')
 
 
+def validation_result(request, id, student_slug):
+
+    student = get_object_or_404(Student, id=id,
+                               slug=student_slug)
+
+    result = student.registered
+
+    return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
+
+
 
 def list_student(request):
 
@@ -97,6 +107,7 @@ def validate_student(request, id, student_slug):
 
     student = get_object_or_404(Student, id=id,
                                slug=student_slug)
+
 
     return render(request, 'user_actions/coordinator_pages/validate_student.html', {'student': student})
 

@@ -40,6 +40,18 @@ class Student(models.Model):
     def get_absolute_path(self):
         return reverse('user_actions:validate_student', args=[self.id, self.slug])
 
+    def approve(self):
+        self.registered = True
+        self.validation_pending = False
+        self.save()
+        return reverse('user_actions:validation_result', args=[self.id, self.slug])
+
+    def disapprove(self):
+        self.registered = False
+        self.validation_pending = False
+        self.save()
+        return reverse('user_actions:validation_result', args=[self.id, self.slug])
+
     def __str__(self):
         return self.name
 

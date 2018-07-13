@@ -26,6 +26,14 @@
                    <!--<input type="button" value="Alugar" />-->
                 <!--</a>-->
             </div>
+            <div  class="col-sm-1">
+                <p class="text-right">
+                    <a href="{{ student.approve }}" class="btn btn-success">Aprovar</a>
+                </p>
+                <p class="text-right">
+                    <a href="{{ student.disapprove }}" class="btn btn-danger">Reprovar</a>
+                </p>
+            </div>
         </div>
     </div>
 {% endblock %}
