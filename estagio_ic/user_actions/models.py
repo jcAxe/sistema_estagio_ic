@@ -19,9 +19,9 @@ class Student(models.Model):
     validation_pending = models.BooleanField(default=True)
     registered = models.BooleanField(default=False)
     able = models.BooleanField(default=False)
-
     time_available_start = models.TextField()
     time_available_end = models.TextField()
+    logged = models.BooleanField(default=False)
 
     register_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
@@ -54,9 +54,9 @@ class Enterprise(models.Model):
     validation_pending = models.BooleanField(default=True)
     registered = models.BooleanField(default=False)
     able = models.BooleanField(default=False)
-
     register_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
+    logged = models.BooleanField(default=False)
 
     class Meta:
         ordering = ('name',)
@@ -72,3 +72,5 @@ class Enterprise(models.Model):
 
     def __str__(self):
         return self.name
+
+

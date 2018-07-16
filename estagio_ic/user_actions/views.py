@@ -18,7 +18,12 @@ def enterprise_menu(request):
     return render(request, 'user_actions/enterprise_pages/enterprise_menu.html')
 
 
-def student_profile(request):
+def student_profile(request, id):
+    student = get_logged_student()
+    name = student.name
+    enroll = student.enroll
+    description = student.description
+    name = student.name
     return render(request, 'user_actions/student_pages/student_profile.html')
 
 
@@ -41,13 +46,16 @@ def student_register(request):
     return render(request, 'user_actions/student_pages/student_register.html',{'form' : form})
 
 
-
+def student_login(request):
+    return render(request, 'user_actions/student_pages/student_login.html')
 
 def coordinator_register(request):
     return render(request, 'user_actions/coordinator_pages/coordinator_register.html')
 
 
 def enterprise_profile(request):
+    enterprise = get_logged_enterprise()
+
     return render(request, 'user_actions/enterprise_pages/enterprise_profile.html')
 
 def enterprise_register(request):
@@ -78,6 +86,28 @@ def validation_result(request, id, student_slug):
     print(result)
     return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
 
+
+
+def approve_application(request, application_id):
+    application = get_object_or_404(Application, application_id=id,)
+
+    application.verified = True
+    application.approved = True
+    application.save()
+    result = application.verified
+
+    return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
+
+def disapprove_application(request, application_id):
+    application = get_object_or_404(Application, application_id=id,)
+
+    application.verified = True
+    application.approved = False
+    application.save()
+    result = application.verified
+
+    return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
+
 def approve_student(request, id, student_slug):
     student = get_object_or_404(Student, id=id,
                                 slug=student_slug)
@@ -86,8 +116,6 @@ def approve_student(request, id, student_slug):
     student.validation_pending = False
     student.save()
     result = student.registered
-
-    return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
 
 def disapprove_student(request, id, student_slug):
     student = get_object_or_404(Student, id=id,
@@ -160,6 +188,15 @@ def validate_enterprise(request, id, enterprise_slug):
                                slug=enterprise_slug)
 
     return render(request, 'user_actions/coordinator_pages/validate_enterprise.html', {'enterprise': enterprise})
+
+
+def get_logged_student():
+    logged_student = Student.objects.get(logged=True)
+    return logged_student
+
+def get_logged_enterprise():
+    logged_enterprise = Enterprise.objects.get(logged=True)
+    return logged_enterprise
 
 # Create your views here.
 

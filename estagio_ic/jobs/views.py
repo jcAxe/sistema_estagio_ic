@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
-from jobs.models import JobOpportunity
+from jobs.models import JobOpportunity, Application
 
 
 def list_job_opportunity(request):
@@ -24,9 +24,19 @@ def display_job_opportunity(request, id, student_slug):
 
 
 def list_job_application(request):
-    return render(request, 'jobs/list_job_application.html')
+    verified_applications = Application.objects.filter(selected=True, verified=True)
+    unverified_applications = Application.objects.filter(selected=True, verified=False)
+
+    return render(request, 'jobs/list_job_applications.html', {
+        'verified_applications' : verified_applications,
+        'unverified_applications' : unverified_applications,
+        })
 
 
 def display_job_application(request):
     return render(request, 'jobs/display_job_application.html')
 
+
+
+
+    

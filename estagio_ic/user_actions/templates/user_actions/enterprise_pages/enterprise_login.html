@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block conteudo %}
+
+
+
+<!-- First Grid -->
+<form class="" action="{% url 'user_actions:enterprise_profile' %}">
+<h3 class="">Para Empresas</h3>
+<div class="form-group">
+  <label>CNPJ</label>
+  <input type="text" class="form-control" name="id" placeholder="Digite seu CPF"> </div>
+<div class="form-group">
+  <label>Password</label>
+  <input type="password" class="form-control" name="password" placeholder="Digite sua senha"> </div>
+<button type="submit" class="btn btn-primary">Entrar</button>
+</form>
+
+{% endblock %}
