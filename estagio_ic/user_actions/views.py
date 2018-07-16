@@ -191,6 +191,7 @@ def list_jobs(request):
         'jobs' : jobs,
         })
 
+
 def list_enterprise(request):
     unverified_enterprises = Enterprise.objects.filter(validation_pending=True)
     verified_enterprises = Enterprise.objects.filter(validation_pending=False)
@@ -200,6 +201,27 @@ def list_enterprise(request):
         'unverified_enterprises' : unverified_enterprises,
         'verified_enterprises' : verified_enterprises,
         })
+
+def list_candidates(request):
+
+    logged_enterprise = get_logged_enterprise()
+    job_opportunites = JobOpportunity.objects.all()
+    for opportunity in job_opportunites:
+        if opportunity.enterprise.id == logged_enterprise.id:
+            company_opportunites = opportunity
+
+    applications = Application.objects.all()
+    valid_applications = []
+
+    for application in applications:
+        if application.job_opportunity.id == company_opportunites.id:
+            valid_applications.append(application)
+
+
+    return render(request, 'user_actions/enterprise_pages/list_candidates.html', {
+        'valid_applications' : valid_applications,
+        })
+
 
 
 def validate_student(request, id, student_slug):

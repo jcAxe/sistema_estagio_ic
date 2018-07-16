@@ -34,5 +34,6 @@ urlpatterns = [
     url(r'^approve_reg_ent/(?P<id>\d+)/(?P<enterprise_slug>[-\w]+)/$', views.approve_enterprise, name='approve_enterprise'),
     url(r'^disapprove_reg_ent/(?P<id>\d+)/(?P<enterprise_slug>[-\w]+)/$', views.disapprove_enterprise, name='disapprove_enterprise'),
 
+    url(r'^list_candidates/$', views.list_candidates, name='list_candidates'),
 
 ]
