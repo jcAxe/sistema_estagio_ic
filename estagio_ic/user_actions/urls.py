@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^enterprise_menu$', views.enterprise_menu, name='enterprise_menu'),
 
     url(r'^student_profile$', views.student_profile, name='student_profile'),
+    url(r'^student_auth', views.student_auth, name='student_auth'),
     url(r'^student_login$', views.student_login, name='student_login'),
     url(r'^student_register$', views.student_register, name='student_register'),
 

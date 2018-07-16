@@ -8,11 +8,11 @@
 
 
 <!-- First Grid -->
-<form class="" action="{% url 'user_actions:student_profile' %}">
+<form class="" action="{% url 'user_actions:student_auth' %}" method="POST">{% csrf_token %}
 <h3 class="">Para alunos</h3>
 <div class="form-group">
   <label>CPF</label>
-  <input type="text" class="form-control" name="id" placeholder="Digite seu CPF"> </div>
+  <input type="number" class="form-control" name="id" placeholder="Digite seu CPF"> </div>
 <div class="form-group">
   <label>Password</label>
   <input type="password" class="form-control" name="password" placeholder="Digite sua senha"> </div>

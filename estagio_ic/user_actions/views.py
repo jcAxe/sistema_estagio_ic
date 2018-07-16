@@ -23,8 +23,9 @@ def student_profile(request, id):
     name = student.name
     enroll = student.enroll
     description = student.description
-    name = student.name
-    return render(request, 'user_actions/student_pages/student_profile.html')
+    return render(request, 'user_actions/student_pages/student_profile.html', {'name' : name,
+                                                                                'enroll':enroll,
+                                                                                'description':description})
 
 
 
@@ -48,6 +49,24 @@ def student_register(request):
 
 def student_login(request):
     return render(request, 'user_actions/student_pages/student_login.html')
+
+def student_auth(request):
+    cpf = request.POST.get('id')
+    password = request.POST.get('password')
+    student = Student.objects.get(id_doc_number=cpf)
+    if student.pw == password:
+        student.logged = True
+        student.save()
+        student = get_logged_student()
+        return render(request, 'user_actions/student_pages/student_profile.html', {'student' : student})
+    else:
+        return render(request, 'user_actions/student_pages/student_login.html')
+
+def student_logout():
+    student = get_logged_student()
+    student.logged = False
+    student.save()
+
 
 def coordinator_register(request):
     return render(request, 'user_actions/coordinator_pages/coordinator_register.html')
