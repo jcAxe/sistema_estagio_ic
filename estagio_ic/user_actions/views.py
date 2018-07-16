@@ -88,26 +88,6 @@ def validation_result(request, id, student_slug):
 
 
 
-def approve_application(request, application_id):
-    application = get_object_or_404(Application, application_id=id,)
-
-    application.verified = True
-    application.approved = True
-    application.save()
-    result = application.verified
-
-    return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
-
-def disapprove_application(request, application_id):
-    application = get_object_or_404(Application, application_id=id,)
-
-    application.verified = True
-    application.approved = False
-    application.save()
-    result = application.verified
-
-    return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
-
 def approve_student(request, id, student_slug):
     student = get_object_or_404(Student, id=id,
                                 slug=student_slug)

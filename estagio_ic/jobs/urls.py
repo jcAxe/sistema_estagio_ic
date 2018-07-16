@@ -11,7 +11,8 @@ urlpatterns = [
 
     url(r'^display_job_application/(?P<id>\d+)/$', views.display_job_application, name='display_job_application'),
 
-
+    url(r'^approve_application/(?P<id>\d+)/$', views.approve_application, name='approve_application'),
+    url(r'^disapprove_application/(?P<id>\d+)/$', views.disapprove_application, name='disapprove_application'),
 
 ]
 

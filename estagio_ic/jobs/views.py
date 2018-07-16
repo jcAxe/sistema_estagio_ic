@@ -35,12 +35,31 @@ def list_job_application(request):
 
 def display_job_application(request, id):
 
-    job_application = get_object_or_404(Application, id=id)
+    application = get_object_or_404(Application, id=id)
 
     return render(request, 'jobs/display_job_application.html', {
-        'job_application' : job_application,
+        'application' : application,
         })
 
+def approve_application(request, id):
+    application = get_object_or_404(Application, id=id)
+
+    application.verified = True
+    application.approved = True
+    application.save()
+    result = application.verified
+
+    return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
+
+def disapprove_application(request, id):
+    application = get_object_or_404(Application, id=id)
+
+    application.verified = True
+    application.approved = False
+    application.save()
+    result = application.verified
+
+    return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
 
 
 
