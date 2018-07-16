@@ -50,6 +50,9 @@ def student_register(request):
 def student_login(request):
     return render(request, 'user_actions/student_pages/student_login.html')
 
+def enterprise_login(request):
+    return render(request, 'user_actions/enterprise_pages/enterprise_login.html')
+
 def student_auth(request):
     cpf = request.POST.get('id')
     password = request.POST.get('password')
@@ -62,10 +65,29 @@ def student_auth(request):
     else:
         return render(request, 'user_actions/student_pages/student_login.html')
 
-def student_logout():
-    student = get_logged_student()
-    student.logged = False
-    student.save()
+
+def enterprise_auth(request):
+    cnpj = request.POST.get('id')
+    password = request.POST.get('password')
+    enterprise = Enterprise.objects.get(id=cnpj)
+    if enterprise.pw == password:
+        enterprise.logged = True
+        enterprise.save()
+        enterprise = get_logged_enterprise()
+        return render(request, 'user_actions/enterprise_pages/enterprise_profile.html', {'enterprise' : enterprise})
+    else:
+        return render(request, 'user_actions/enterprise_pages/enterprise_login.html')
+
+def logout():
+    all_students = Student.objects.all()
+    all_students(logged = False)
+    
+    all_students.save()
+    all_enterprise = Enterprise.objects.all()
+    all_enterprise(logged = False)
+    
+    all_enterprise.save()
+    return render(request, 'user_actions/enterprise_pages/enterprise_menu.html')
 
 
 def coordinator_register(request):
