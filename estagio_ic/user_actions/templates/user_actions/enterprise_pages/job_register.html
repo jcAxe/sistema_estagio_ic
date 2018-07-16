@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block conteudo %}
+	<div class="container">
+		<div class="page-header">
+			<h1>Registrar Vaga</h1>
+		</div>
+		<div class="col-sm-12">
+            <form action="{% url 'user_actions:job_register' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table border="1">
+                        {{ form}}
+                    </table>
+                <input type="submit" value="OK">
+            </form>
+        </div>
+    </div>
+
+	
+{%endblock%}
+	
+	
+	
+	
+	
+	

@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 
 from jobs.models import JobOpportunity, Application
+from jobs.forms import JobOpportunityRegisterForm
 from user_actions.models import Student
 from user_actions.models import Enterprise
 from user_actions.forms import StudentRegisterForm
@@ -112,6 +113,19 @@ def enterprise_register(request):
 
     return render(request, 'user_actions/enterprise_pages/enterprise_register.html',{'form' : form})
 
+def job_register(request):
+    if request.method == 'POST':
+        form = JobOpportunityRegisterForm(request.POST)
+
+        if form.is_valid():
+            preview = form.save(commit=False)
+            preview.slug = slugify(preview.name)
+            preview.save()
+            return HttpResponseRedirect(reverse('user_actions:successful_register'))
+    else:
+        form = JobOpportunityRegisterForm()
+
+    return render(request, 'user_actions/enterprise_pages/job_register.html',{'form' : form})
 
 def successful_register(request):
     return render(request, 'user_actions/successful_register.html')

@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^coordinator_register$', views.coordinator_register, name='coordinator_register'),
     url(r'^enterprise_profile$', views.enterprise_profile, name='enterprise_profile'),
     url(r'^enterprise_register$', views.enterprise_register, name='enterprise_register'),
+    url(r'^job_register$', views.job_register, name='job_register'),
 
     url(r'^list_student', views.list_student, name='list_student'),
     url(r'^list_enterprise', views.list_enterprise, name='list_enterprise'),
