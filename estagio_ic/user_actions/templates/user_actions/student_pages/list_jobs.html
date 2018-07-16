@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    <title>Alunos</title>
+{% endblock %}
+
+{% block conteudo %}
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h2>Oportunidades de estágio</h2>
+                        <div class="row">
+                                {% for job in jobs %}
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="thumbnail">
+                                            <div class="caption">
+                                                 <h4><a href="{{ job.get_absolute_path }}">{{ job.name }}</a></h4>
+                                                {{ job.description }}
+                                                {{ job.requirements }}
+                                                <br>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

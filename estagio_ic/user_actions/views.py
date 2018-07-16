@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 
-
+from jobs.models import JobOpportunity, Application
 from user_actions.models import Student
 from user_actions.models import Enterprise
 from user_actions.forms import StudentRegisterForm
@@ -181,6 +181,15 @@ def list_student(request):
         'verified_students' : verified_students,
         })
 
+def list_jobs(request):
+
+    jobs = JobOpportunity.objects.all()
+    
+
+
+    return render(request, 'user_actions/student_pages/list_jobs.html', {
+        'jobs' : jobs,
+        })
 
 def list_enterprise(request):
     unverified_enterprises = Enterprise.objects.filter(validation_pending=True)

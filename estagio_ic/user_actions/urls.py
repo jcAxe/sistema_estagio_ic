@@ -20,6 +20,7 @@ urlpatterns = [
 
     url(r'^list_student', views.list_student, name='list_student'),
     url(r'^list_enterprise', views.list_enterprise, name='list_enterprise'),
+    url(r'^list_jobs', views.list_jobs, name='list_jobs'),
 
     url(r'^validation_st/(?P<id>\d+)/(?P<student_slug>[-\w]+)/$', views.validate_student, name='validate_student'),
     url(r'^validation_ent/(?P<id>\d+)/(?P<enterprise_slug>[-\w]+)/$', views.validate_enterprise, name='validate_enterprise'),
