@@ -44,12 +44,11 @@ class JobOpportunity (models.Model):
 class Application (models.Model):
     student_cpf = models.ForeignKey(Student, related_name='applicant')
     job_opportunity = models.ForeignKey(JobOpportunity, related_name='related_opportunity')
+
     application_date = models.DateTimeField(auto_now_add=True)
     selected = models.BooleanField(default=False)
-    verified = models.BooleanField(default=False)
-    approved = models.BooleanField(default=False)
-    update_date = models.DateTimeField(auto_now=True)
 
+    update_date = models.DateTimeField(auto_now=True)
 
 
     class Meta:
@@ -67,4 +66,4 @@ class Application (models.Model):
     #     return reverse('user_actions:display_student', args=[self.id, self.slug])
 
     def __str__(self):
-        return 'candidatura_' + str(self.id)
+        return 'candidatura_' + self.id

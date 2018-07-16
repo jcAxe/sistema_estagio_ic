@@ -8,7 +8,6 @@ urlpatterns = [
     url(r'^enterprise_menu$', views.enterprise_menu, name='enterprise_menu'),
 
     url(r'^student_profile$', views.student_profile, name='student_profile'),
-    url(r'^student_login$', views.student_login, name='student_login'),
     url(r'^student_register$', views.student_register, name='student_register'),
 
     url(r'^coordinator_register$', views.coordinator_register, name='coordinator_register'),
@@ -29,7 +28,4 @@ urlpatterns = [
 
     url(r'^approve_reg_ent/(?P<id>\d+)/(?P<enterprise_slug>[-\w]+)/$', views.approve_enterprise, name='approve_enterprise'),
     url(r'^disapprove_reg_ent/(?P<id>\d+)/(?P<enterprise_slug>[-\w]+)/$', views.disapprove_enterprise, name='disapprove_enterprise'),
-
-    url(r'^approve_application/(?P<id>\d+)/$', views.approve_application, name='approve_application'),
-    url(r'^disapprove_application/(?P<id>\d+)/$', views.disapprove_application, name='disapprove_application'),
 ]
