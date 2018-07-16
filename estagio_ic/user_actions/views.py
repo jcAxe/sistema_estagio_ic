@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 
+
 from user_actions.models import Student
 from user_actions.models import Enterprise
 from user_actions.forms import StudentRegisterForm
@@ -48,10 +49,18 @@ def student_register(request):
 
 
 def student_login(request):
-    return render(request, 'user_actions/student_pages/student_login.html')
+    try:
+        student = get_logged_student()
+    except Student.DoesNotExist:
+        return render(request, 'user_actions/student_pages/student_login.html')
+    return render(request, 'user_actions/student_pages/student_profile.html', {'student' : student})
 
 def enterprise_login(request):
-    return render(request, 'user_actions/enterprise_pages/enterprise_login.html')
+    try:
+        enterprise = get_logged_enterprise()
+    except Enterprise.DoesNotExist:
+        return render(request, 'user_actions/enterprise_pages/enterprise_login.html')
+    return render(request, 'user_actions/enterprise_pages/enterprise_profile.html', {'enterprise' : enterprise})
 
 def student_auth(request):
     cpf = request.POST.get('id')
