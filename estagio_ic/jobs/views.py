@@ -47,7 +47,7 @@ def approve_application(request, id):
     application.verified = True
     application.approved = True
     application.save()
-    result = application.verified
+    result = application.approved
 
     return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
 
@@ -57,7 +57,7 @@ def disapprove_application(request, id):
     application.verified = True
     application.approved = False
     application.save()
-    result = application.verified
+    result = application.approved
 
     return render(request, 'user_actions/coordinator_pages/validation_result.html', {'result': result})
 

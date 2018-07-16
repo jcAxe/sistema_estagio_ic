@@ -11,7 +11,8 @@
             </div>
             <div class="col-sm-9">
                 <h3><a href="{{ application.get_absolute_path }}">{{ application.job_opportunity.description }}</a></h3>
-                <h3>{{ application.student_cpf }}</h3>
+                <p>{{ application.student_cpf }}</p>
+                <p>{{ application.job_opportunity.enterprise.name }}</p>
                 <p>{{application.application_date}}</p>
 
                 <p>
@@ -21,14 +22,27 @@
                         Candidatura não verificada.
                     {% endif %}
                 </p>
+                <p>
+                    {% if application.verified %}
+                        {% if application.approved %}
+                            Candidatura aprovada.
+                        {% else %}
+                            Candidatura reprovada.
+                        {% endif %}
+                    {% endif %}
+                </p>
                 <!--<a href="{{ imovel.get_absolute_path}}sucesso">-->
                    <!--<input type="button" value="Alugar" />-->
                 <!--</a>-->
             </div>
-            <div  class="col-sm-1">
+
+            {% if not application.verified %}
+                <div  class="col-sm-1">
                     <a href="{% url 'jobs:approve_application' application.id %}" class="btn btn-success">Aprovar</a>
                     <a href="{% url 'jobs:disapprove_application' application.id %}" class="btn btn-danger">Reprovar</a>
-            </div>
+                </div>
+            {% endif %}
+
         </div>
     </div>
 {% endblock %}
