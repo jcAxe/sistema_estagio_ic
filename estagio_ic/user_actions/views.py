@@ -78,16 +78,6 @@ def enterprise_auth(request):
     else:
         return render(request, 'user_actions/enterprise_pages/enterprise_login.html')
 
-def logout():
-    all_students = Student.objects.all()
-    all_students(logged = False)
-    
-    all_students.save()
-    all_enterprise = Enterprise.objects.all()
-    all_enterprise(logged = False)
-    
-    all_enterprise.save()
-    return render(request, 'user_actions/enterprise_pages/enterprise_menu.html')
 
 
 def coordinator_register(request):
