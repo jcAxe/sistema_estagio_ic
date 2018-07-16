@@ -9,7 +9,7 @@ urlpatterns = [
 
     url(r'^display_job_opportunity/(?P<id>\d+)/(?P<student_slug>[-\w]+)/$', views.display_job_opportunity, name='display_job_opportunity'),
 
-    url(r'^display_job_application/$', views.display_job_application, name='display_job_application'),
+    url(r'^display_job_application/(?P<id>\d+)/$', views.display_job_application, name='display_job_application'),
 
 
 

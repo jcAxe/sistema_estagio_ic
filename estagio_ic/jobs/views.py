@@ -13,10 +13,10 @@ def list_job_opportunity(request):
         'job_opportunities' : job_opportunities,
         })
 
-def display_job_opportunity(request, id, student_slug):
+def display_job_opportunity(request, id, opportunity_slug):
 
     job_opportunity = get_object_or_404(JobOpportunity, id=id,
-                                        slug=student_slug)
+                                        slug=opportunity_slug)
 
     return render(request, 'jobs/display_job_opportunity.html', {
         'job_opportunity' : job_opportunity,
@@ -33,8 +33,13 @@ def list_job_application(request):
         })
 
 
-def display_job_application(request):
-    return render(request, 'jobs/display_job_application.html')
+def display_job_application(request, id):
+
+    job_application = get_object_or_404(Application, id=id)
+
+    return render(request, 'jobs/display_job_application.html', {
+        'job_application' : job_application,
+        })
 
 
 

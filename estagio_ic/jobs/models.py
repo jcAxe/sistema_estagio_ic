@@ -62,9 +62,8 @@ class Application (models.Model):
         return self.register_date >= timezone.now() - datetime.timedelta(days=1)
 
 
-    #this have to be looked carefully, ass zé, trab estagio
-    # def get_absolute_path(self):
-    #     return reverse('user_actions:display_student', args=[self.id, self.slug])
+    def get_absolute_path(self):
+        return reverse('jobs:display_job_application', args=[self.id])
 
     def __str__(self):
         return 'candidatura_' + str(self.id)

@@ -19,7 +19,7 @@
                                     <div class="col-md-4 col-sm-6">
                                         <div class="thumbnail">
                                             <div class="caption">
-                                                 <h4><a href="{{ application.id }}">{{ application.job_opportunity.name }}</a></h4>
+                                                 <h4><a href="{{ application.get_absolute_path }}">{{ application.job_opportunity.name }}</a></h4>
                                                 {{ application.job_opportunity.description }}
                                                 <br>
                                                 <br>
